@@ -1,12 +1,23 @@
 //Write a C program to represent a sparse matrix in three tuple format.
+//code written for int datatype change accordingly
 #include<stdio.h>
 #include<stdlib.h>
 int main(){
 	
-	int a[100][100],sp[3][100],r,c,i,j,n0count=0,z=1;
+	int **a,**sp,r,c,i,j,n0count=0,z=1;
 	
 	printf("Enter no fo Rows and Columns: ");
 	scanf("%d %d",&r,&c);
+	a=(int**)malloc(r*sizeof(int));
+	for ( i = 0; i < c; i++)
+	{
+		a[i]=(int*)malloc(c*sizeof(int));
+	}
+	sp=(int**)malloc(r*sizeof(int));
+	for ( i = 0; i < c; i++)
+	{
+		sp[i]=(int*)malloc(c*sizeof(int));
+	}
 	printf("Enter %d matrix data : \n",r*c);
 	for(i=0;i<r;i++){
 		for(j=0;j<c;j++){
