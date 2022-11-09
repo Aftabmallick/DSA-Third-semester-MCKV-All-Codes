@@ -3,7 +3,7 @@ a. Find maximum and minimum elements from the array along with their positions.
 b. Insert an element at a given position.
 c. Remove an element from a given position.
 d. Display the array.*/
-
+//This code is written for int type data if you are using different datatype change the datatype accordingly
 #include<stdio.h>
 #include<stdlib.h>
 int main(){
