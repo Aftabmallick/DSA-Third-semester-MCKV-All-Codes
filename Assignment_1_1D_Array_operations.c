@@ -7,11 +7,11 @@ d. Display the array.*/
 #include<stdio.h>
 #include<stdlib.h>
 int main(){
-	int a[1000],i,n,min,max,p,z,c,x,v;
-   char ch;
+	int *a,i,n,min,max,p,z,c,x,v;
+   	char ch;
     printf("Enter size of array : ");
     scanf("%d",&n);
- 
+	a=(int*)malloc(n*sizeof(int));
     printf("Enter elements in array : ");
     for(i=0; i<n; i++)
     {
