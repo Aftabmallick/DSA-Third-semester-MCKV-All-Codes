@@ -1,5 +1,6 @@
 /*3. Write a C program to solve the Tower of Hanoi problem for n disks (n should be taken as keyboard 
 input) using recursion.*/
+//Time Complexity T(n)=2^n -1
 #include<stdio.h>
 #include<stdlib.h>
 void toh(int,char,char,char);
