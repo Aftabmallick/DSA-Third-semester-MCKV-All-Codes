@@ -15,7 +15,7 @@ int main()
 		scanf("%d", &n);
 		for(i = 0; i < n; i++){
 		
-			printf("%d ", f(i));
+			printf("%d ", f(i)); //to display the Fibonacci sequence up to n-th term
 			
 		}
 			return 0;
