@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #define max 3 //You can change stack size 
 int top=-1,s[max];
+//Pushing Elements in Stack
 void push(int n)
 {
     if(top==max-1)
@@ -17,6 +18,7 @@ void push(int n)
         s[top]=n;
     }
 }
+
 void pop()
 {
     int del;
