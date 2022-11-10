@@ -1,4 +1,5 @@
 /*5. Write a menu driven C program to implement a stack operation (Push, Pop, and Display) using array.*/
+//This program is written for stack of size 3
 #include<stdio.h>
 #include<stdlib.h>
 #define max 3
