@@ -18,7 +18,7 @@ void push(int n)
         s[top]=n;
     }
 }
-
+//Deleteing element from stack(pop)
 void pop()
 {
     int del;
