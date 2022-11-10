@@ -3,7 +3,7 @@
 #include<stdio.h>
 int f(int n)
 	{
-		if(n==0 || n==1)
+		if(n==0 || n==1) //first two terms
 			return n;
 		else
 			return f(n-1) + f(n-2);
