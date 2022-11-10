@@ -2,7 +2,7 @@
 //This program is written for stack of size 3
 #include<stdio.h>
 #include<stdlib.h>
-#define max 3
+#define max 3 //You can change stack size 
 int top=-1,s[max];
 void push(int n)
 {
