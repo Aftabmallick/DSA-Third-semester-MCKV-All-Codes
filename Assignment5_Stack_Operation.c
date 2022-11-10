@@ -34,6 +34,7 @@ void pop()
         top=top-1;
     }
 }
+//Visualizing Elements of Stack
 void display()
 {
     int i;
