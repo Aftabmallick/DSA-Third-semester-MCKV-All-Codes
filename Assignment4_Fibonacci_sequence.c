@@ -2,7 +2,7 @@
 */
 #include<stdio.h>
 int f(int n)
-	{
+	{	//generate fibonacci sequence
 		if(n==0 || n==1) //first two terms
 			return n;
 		else
