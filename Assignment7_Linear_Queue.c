@@ -1,4 +1,5 @@
 /*7. Write a menu driven program to implement a Linear Queue using array*/
+//this code is written for queue size 3
 #include<stdio.h>
 #include<stdlib.h>
 #define MAXSIZE 3
