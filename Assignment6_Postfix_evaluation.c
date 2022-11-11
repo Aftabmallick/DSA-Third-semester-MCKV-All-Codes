@@ -4,7 +4,7 @@
 #include<stdio.h>
 #include<math.h>
 #include<ctype.h>
-#define MAXSIZE 10
+#define MAXSIZE 10//change stack length here
 int stck[MAXSIZE],tos=-1;
 //pushing element in stack
 void push(int x)
