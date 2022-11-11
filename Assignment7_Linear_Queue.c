@@ -2,7 +2,7 @@
 //this code is written for queue size 3
 #include<stdio.h>
 #include<stdlib.h>
-#define MAXSIZE 3
+#define MAXSIZE 3//change queue size here
 void insert();
 void del();
 void display();
