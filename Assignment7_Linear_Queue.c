@@ -31,6 +31,7 @@ int main()
         } 
     }
 }
+//inserting element in queue
 void insert()
 {
     int add;
