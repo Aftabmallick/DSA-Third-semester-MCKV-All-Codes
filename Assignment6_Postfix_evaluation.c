@@ -6,7 +6,7 @@
 #include<ctype.h>
 #define MAXSIZE 10
 int stck[MAXSIZE],tos=-1;
-
+//pushing element in stack
 void push(int x)
 {
     if(tos==MAXSIZE-1)
