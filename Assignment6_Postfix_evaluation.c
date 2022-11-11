@@ -17,6 +17,7 @@ void push(int x)
         stck[tos]=x;
     }
 }
+//Evaluateing and poping
 int pop()
 {
     int y=-1;
