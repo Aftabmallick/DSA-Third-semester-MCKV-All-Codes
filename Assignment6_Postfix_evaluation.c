@@ -73,6 +73,7 @@ int main()
         }
         i++;
     }
+    //display
     printf("\nThe evaluted result of postfix expression = %d ",stck[tos]);
     return 0;
 }
