@@ -1,10 +1,12 @@
 /*6. Write a C program to evaluate a postfix expression using stack.
 */
+//this code is written for expression under length 10
 #include<stdio.h>
 #include<math.h>
 #include<ctype.h>
 #define MAXSIZE 10
 int stck[MAXSIZE],tos=-1;
+
 void push(int x)
 {
     if(tos==MAXSIZE-1)
