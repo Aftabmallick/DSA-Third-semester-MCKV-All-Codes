@@ -47,6 +47,7 @@ void insert()
         queue[rear]=add;
     }
 } 
+//deleting element from queue
 void del()
 {
     int remove;
