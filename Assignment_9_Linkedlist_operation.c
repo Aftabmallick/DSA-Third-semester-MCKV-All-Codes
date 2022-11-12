@@ -79,6 +79,7 @@ void del_position(){
 	free(temp->next);
 	temp->next=next;
 }
+//function to delete last node
 void del_rear(){
 	if(start==NULL){
 		printf("List Empty");
