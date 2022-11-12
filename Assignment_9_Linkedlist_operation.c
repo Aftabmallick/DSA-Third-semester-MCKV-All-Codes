@@ -99,6 +99,7 @@ void del_rear(){
 	free(todelete);
 	
 }
+//function to delete first node
 void del_front(){
 	if(start==NULL){
 		printf("List Empty");
