@@ -2,7 +2,7 @@
 AFTER GIVEN VALUE,) of a linked list and also reverse the same.*/
 #include <stdio.h>
 #include<stdlib.h>
-
+//declearing node of struct datatype
 struct node{
 	int data; 
 	struct node *next; 
