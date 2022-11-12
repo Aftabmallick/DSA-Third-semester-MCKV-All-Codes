@@ -1,207 +1,233 @@
-/*9. Write a menu driven C program to insert and delete element at following positions (BEGIN, END, 
-AFTER GIVEN VALUE,) of a linked list and also reverse the same.*/
 #include <stdio.h>
-#include <stdlib.h>
-struct node {
-    int data;
-    struct node *next;
-};
-struct node* start = NULL;
-struct node *prev;
-void display(){  
-    if (start == NULL) {
-        printf("\nList is empty\n");
-        return;
-    }
-    struct node* temp;
-    temp = start;
-    while (temp != NULL) {
-        printf("Data = %d\n", temp->data);
-        temp = temp->next;
-    }
+#include<stdlib.h>
+
+struct node{
+	int data; 
+	struct node *next; 
+};  
+struct node *start=NULL;
+struct node *new_node,*temp;
+void display(){
+	temp=start;
+	while(temp!=NULL)
+	{
+		printf("%d----->",(*temp).data);
+		temp=temp->next;
+	}
+	printf("NULL");	
 }
-void insertAtFront(){
-    int data;
-    struct node* temp;
-    temp = (struct node*)malloc(sizeof(struct node));
-    printf("\nEnter number to be inserted: ");
-    scanf("%d", &data);
-    temp->data = data;
-    temp->prev = NULL;
-    temp->next = start;
-    start = temp;
+void reverse(){
+	struct node *prev=NULL;
+	struct node *next;
+	temp=start;
+	while(temp!=NULL){
+			next=temp->next;
+			temp->next=prev;
+			prev=temp;
+			temp=next;
+	}
+	start=prev;
 }
-void insertAtEnd(){
-    int data;
-    struct node *temp, *trav;
-    temp = (struct node*)malloc(sizeof(struct node));
-    temp->prev = NULL;
-    temp->next = NULL;
-    printf("\nEnter number to be inserted: ");
-    scanf("%d", &data);
-    temp->data = data;
-    temp->next = NULL;
-    trav = start;
-    if (start == NULL) {
- 
-        start = temp;
-    }
-    else {
-        while (trav->next != NULL)
-            trav = trav->next;
-        temp->prev = trav;
-        trav->next = temp;
-    }
+void del_value(){
+	int n,c=0;
+	struct node *prev;
+	printf("Enter value to be deleted next: ");
+	scanf("%d",&n);
+	temp=start;
+	
+	while(temp!=NULL){
+		prev=temp;
+		if((*temp).data==n){
+		
+		prev->next=temp->next->next;
+		free(temp->next);
+		c=0;
+		return;
+		}
+		else
+		c++;
+		temp=temp->next;
+		}
+	if(c!=0){
+		printf("Value not found.");
+	}
 }
-void insertAtPosition(){
-    int data, pos, i = 1;
-    struct node *temp, *newnode;
-    newnode = malloc(sizeof(struct node));
-    newnode->next = NULL;
-    newnode->prev = NULL;
-    printf("\nEnter position : ");
-    scanf("%d", &pos);
-    printf("\nEnter number to be inserted: ");
-    scanf("%d", &data);
-    newnode->data = data;
-    temp = start;
-    while (i < pos ) {
-        temp = temp->next;
-        i++;
-    }
-    newnode->next = temp->next;
-    newnode->prev = temp;
-    temp->next = newnode;
-    temp->next->prev = newnode;
-    }
+void del_position(){
+	int pos,i;
+	struct node *next;
+	printf("Enter position: ");
+	scanf("%d",&pos);
+	temp=start;
+	if(pos==0){
+		temp=temp->next;
+		return;
+	}
+	for(i=0;i<pos-2;i++){
+		temp=temp->next;
+	}
+	if(temp==NULL){
+		printf("Position isn't in range.");
+		return;
+	}
+	next=temp->next->next;
+	free(temp->next);
+	temp->next=next;
 }
- 
-// function to delete from the front of the linked list
-void deleteFirst(){
-    struct node* temp;
-    if (start == NULL)
-        printf("\nList is empty\n");
-    else {
-        temp = start;
-        start = start->next;
-        if (start != NULL)
-            start->prev = NULL;
-        free(temp);
-    }
+void del_rear(){
+	if(start==NULL){
+		printf("List Empty");
+	}
+	struct node *todelete;
+	todelete=start;
+	temp=start;
+	while(todelete->next!=NULL){
+		temp=todelete;
+		todelete=todelete->next;
+	}
+	if(todelete ==start)
+	start=NULL;
+	else
+	temp->next=NULL;
+	
+	free(todelete);
+	
 }
- 
-// function to delete from the end
-// of the linked list
-void deleteEnd(){
-    struct node* temp;
-    if (start == NULL)
-        printf("\nList is empty\n");
-    temp = start;
-    while (temp->next != NULL)
-        temp = temp->next;
-    if (start->next == NULL)
-        start = NULL;
-    else {
-        temp->prev->next = NULL;
-        free(temp);
-    }
+void del_front(){
+	if(start==NULL){
+		printf("List Empty");
+	}
+	else{
+	
+	temp=start;
+	start=start->next;
+	free(temp);
 }
- 
-// function to delete from any given
-// position from the linked list
-void deletePosition(){
-    int pos, i = 1;
-    struct node *temp, *position;
-    temp = start;
- 
-    // If DLL is empty
-    if (start == NULL)
-        printf("\nList is empty\n");
- 
-    // Otherwise
-    else {
-        // Position to be deleted
-        printf("\nEnter position : ");
-        scanf("%d", &pos);
- 
-        // If the position is the first node
-        if (pos == 1) {
-            position = start;
-            start = start->next;
-            if (start != NULL) {
-                start->prev = NULL;
-            }
-            free(position);
-            return;
-        }
- 
-        // Traverse till position
-        while (i < pos - 1) {
-            temp = temp->next;
-            i++;
-        }
-        // Change Links
-        position = temp->next;
-        if (position->next != NULL)
-            position->next->prev = temp;
-        temp->next = position->next;
- 
-        // Free memory
-        free(position);
-    }
 }
- 
-int main(){
-    int choice;
-    while (1) {
- 
-        printf("\n\t1 To see list\n");
-        printf("\t2 For insertion at"
-            " starting\n");
-        printf("\t3 For insertion at"
-            " end\n");
-        printf("\t4 For insertion at "
-            "any position\n");
-        printf("\t5 For deletion of "
-            "first element\n");
-        printf("\t6 For deletion of "
-            "last element\n");
-        printf("\t7 For deletion of "
-            "element at any position\n");
-        printf("\t8 To exit\n");
-        printf("\nEnter Choice :\n");
-        scanf("%d", &choice);
- 
-        switch (choice) {
-        case 1:
-            display();
-            break;
-        case 2:
-            insertAtFront();
-            break;
-        case 3:
-            insertAtEnd();
-            break;
-        case 4:
-            insertAtPosition();
-            break;
-        case 5:
-            deleteFirst();
-            break;
-        case 6:
-            deleteEnd();
-            break;
-        case 7:
-            deletePosition();
-            break;
- 
-        case 8:
-            exit(1);
-            break;
-        default:
-            printf("Incorrect Choice. Try Again \n");
-            continue;
-        }
-    }
+void insert_after_given_position(){
+	int pos,i;
+	printf("Enter position: ");
+	scanf("%d",&pos);
+	temp=start;
+	pos=pos-1;
+	while(pos--){
+		
+		temp=temp->next;
+		if(temp==NULL){
+			printf("Position out of range.");
+			free(temp->next);
+			return;
+		}
+	}
+	new_node=(struct node*)malloc(1*sizeof(struct node));
+	printf("Enter value for insertion: ");
+	scanf("%d",&new_node->data);
+	new_node->next=temp->next;
+	temp->next=new_node;
+	free(temp->next);
+}
+void insert_after_given_value(){
+	int n,count=0;
+	printf("Enter value to be searched: ");
+	scanf("%d",&n);
+	temp=start;
+	while(temp!=NULL){
+		if((*temp).data==n){
+			new_node=(struct node*)malloc(1*sizeof(struct node));
+			printf("Enter value for insertion: ");
+			scanf("%d",&new_node->data);
+			
+			new_node->next=temp->next;
+			temp->next=new_node;
+			count=0;
+			break;
+		}
+		else{
+			count++;
+		}
+		temp=temp->next;
+	}
+	if(count!=0){
+		printf("Value not Found.");
+	}
+	
+}
+void insert_rear(){
+	new_node=(struct node*)malloc(1*sizeof(struct node));
+	printf("\nEnter the value of new node: ");
+	scanf("%d",&new_node->data);
+		new_node->next=NULL;
+		if(start==NULL)
+			start=new_node;
+		else
+		{
+			temp=start;
+			while(temp->next!=NULL)
+				temp=temp->next;
+			temp->next=new_node;
+		}
+}
+void insert_front(){
+	new_node=(struct node*)malloc(1*sizeof(struct node));
+	printf("\nEnter the value of new node: ");
+	scanf("%d",&new_node->data);
+	new_node->next=start;
+	start=new_node;
+}
+void Create_list(){
+	char ch='y';
+	while(ch=='Y'||ch=='y')
+	{
+		insert_rear();
+		printf("want to create another node?[press Y or y]  ");
+		scanf(" %c",&ch);
+	}
+}
+
+int main()
+{
+   int ch;
+   while(1){
+       printf("\n1.Create List\n2.Insert at Front\n3.Insert at Rear\n4.Insert after given value.\n5.Insert after given position.\n6.Delete from front.\n7.Delete from rear.\n8.Delete from position.\n9.delete next value of entered value.\n10.Reverse.\n11.Display\n12.Exit\n");
+       printf("Enter Choice: ");
+       scanf("%d",&ch);
+       switch(ch){
+            case 1:
+                Create_list();
+                break;
+            case 2:
+            	insert_front();
+            	break;
+            case 3:
+            	insert_rear();
+            	break;
+            case 4:
+            	insert_after_given_value();
+            	break;
+            case 5:
+            	insert_after_given_position();
+            	break;
+            case 6:
+            	del_front();
+            	break;
+            case 7:
+            	del_rear();
+            	break;
+            case 8:
+            	del_position();
+            	break;
+            case 9:
+            	del_value();
+            	break;
+            case 10:
+            	reverse();
+            	break;
+            case 11:
+            	display();
+            	break;
+            case 12:
+            	exit(1);
+       }
+   }
+
     return 0;
 }
