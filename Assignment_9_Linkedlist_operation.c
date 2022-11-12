@@ -19,6 +19,7 @@ void display(){
 	}
 	printf("NULL");	
 }
+//function for reversing linkedlist
 void reverse(){
 	struct node *prev=NULL;
 	struct node *next;
