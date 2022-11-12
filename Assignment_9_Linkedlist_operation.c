@@ -9,6 +9,7 @@ struct node{
 };  
 struct node *start=NULL;
 struct node *new_node,*temp;
+//Displaying elements of list
 void display(){
 	temp=start;
 	while(temp!=NULL)
