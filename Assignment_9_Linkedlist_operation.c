@@ -32,6 +32,7 @@ void reverse(){
 	}
 	start=prev;
 }
+//function for deleting a node from linkedlist
 void del_value(){
 	int n,c=0;
 	struct node *prev;
