@@ -57,6 +57,7 @@ void del_value(){
 		printf("Value not found.");
 	}
 }
+//function for deleting a node from a given position
 void del_position(){
 	int pos,i;
 	struct node *next;
